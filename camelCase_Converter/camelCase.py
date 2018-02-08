@@ -12,7 +12,7 @@ def camelCase(sentance):
             if okay(i):
                 if i==words[0]:
                     if i[0].isdigit():
-                        raise SyntaxError("python variable names cannot start with a number.")
+                        raise CamelError("python variable names cannot start with a number.")
                     else:
                         i=words[0].lower()
                         camelCase=camelCase+i
@@ -20,11 +20,11 @@ def camelCase(sentance):
                     i=i.capitalize()
                     camelCase=camelCase+i
             else:
-                raise SyntaxError("python variable names cannot contain special characters (except for '_')")
+                raise CamelError("python variable names cannot contain special characters (except for '_')")
 
         return camelCase #good so far
     else:
-        raise SyntaxError("That is a keyword and cannot be used as a variable name.")
+        raise CamelError("That is a keyword and cannot be used as a variable name.")
 
 def okay(word):
     #Only numbers, letters, and underscores are okay
@@ -46,3 +46,6 @@ def main():
     camelCase(sentance)
 
 #main()
+
+class CamelError(Exception):
+    pass
